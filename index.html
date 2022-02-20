@@ -1,16 +1,18 @@
 <html>
-<head>
-<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-</head>
+	<head>
+		<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+	</head>
 <body>
 <script>
-	vkBridge.send('VKWebAppInit').then( a => console.log( a ) );
+	vkBridge.send( 'VKWebAppInit' );
 
-	vkBridge.send("VKWebAppCheckNativeAds", {"ad_format": "interstitial"}).then( a => console.log( a ) );
-
-    vkBridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
-    .then(data => console.log(data.result))
-    .catch(error => console.log(error));
+	vkBridge.send( "VKWebAppCheckNativeAds", { "ad_format": "interstitial" } ).then( a => {
+		if( a.result ) { 
+			vkBridge.send( "VKWebAppShowNativeAds", { ad_format:"interstitial" } )
+    				.then( data => console.log( data.result ) )
+    				.catch( error => console.log( error ) );
+		}
+	} );
 </script>
 Hello world
 </body>
