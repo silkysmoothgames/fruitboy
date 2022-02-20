@@ -4,9 +4,9 @@
 </head>
 <body>
 <script>
-	console.log( vkBridge.send('VKWebAppInit') );
+	vkBridge.send('VKWebAppInit').then( a => console.log( a ) );
 
-	console.log( vkBridge.send("VKWebAppCheckNativeAds", {"ad_format": "interstitial"}) );
+	vkBridge.send("VKWebAppCheckNativeAds", {"ad_format": "interstitial"}).then( a => console.log( a ) );
 
     vkBridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
     .then(data => console.log(data.result))
