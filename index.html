@@ -1,1 +1,17 @@
+<html>
+<head>
+<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+</head>
+<body>
+<script>
+	vkBridge.send('VKWebAppInit');
+
+	vkBridge.send("VKWebAppCheckNativeAds", {"ad_format": "interstitial"});
+
+    vkBridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
+    .then(data => console.log(data.result))
+    .catch(error => console.log(error));
+</script>
 Hello world
+</body>
+</html>
